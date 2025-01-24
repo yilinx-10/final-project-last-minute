@@ -2,13 +2,13 @@
 # Topic idea:
 How do social bots engage in public discussions about topics in the Los Angeles wildfire?
 # Sources of data: 
-Reddit: 
+## Reddit: 
 Collection Method: Selenium
 Justification: Reddit is one of the largest platforms where people engage in idea exchanges about a wide variety of topics. It is easy to keep track of discussions by focusing on several selected Reddit communities directly related to the event of interest. Reddit data can be scraped using Selenium, which was introduced in class.
-Bluesky:
+## Bluesky:
 Collection Method: Bluesky API(https://docs.bsky.app/)
 Justification: The Bluesky API is free and publicly available without the need for applications and approval. The platform itself is emerging.
-YouTube:
+## YouTube:
 Collection Method: YouTube API(https://developers.google.com/youtube/v3/getting-started)
 Justification: YouTube’s API allows users to access the comment threads of videos in JSON structure. 
 Note: We are actively considering other potential sources of data including X/Twitter(through web-scraping packages), Quora(web-scraping), Meta/Facebook(API), Instagram(API), etc.
