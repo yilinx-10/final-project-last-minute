@@ -7,6 +7,8 @@ import numpy as np
 import pandas as pd
 import pprint
 import json
+import datetime
+import prawcore
 import time
 
 post_lst = []
@@ -14,12 +16,15 @@ comment_lst = []
 pd.set_option('max_colwidth', None)
 
 reddit = praw.Reddit(
-    client_id="i_v3iJUCn5hWxYjgomFomw",
-    client_secret="gPdZVrgfpB5gpGSD-jYFOMEMfjjCXA",
+    client_id="oCPIQsxeqy9ioFGkQNv26A",
+    client_secret="07TikO3G7waJyTFTXACma2gsUnsPmg",
     password="macs30122",
-    user_agent="Scraper122",
-    username="enailenaile",
+    user_agent="Scraper for 122 Final Project by u/Background-Motor-921",
+    username="Background-Motor-921"
 )
+
+start_date = '05-01-25 00:00:00'
+start_date = datetime.datetime.strptime(start_date, '%d-%m-%y %H:%M:%S').timestamp()
 
 key_to_remove = ['_fetched', '_reddit',  '_replies',\
                  '_submission', 'body_html', '_additional_fetch_params',\
@@ -30,25 +35,47 @@ def clean_data(data, key_to_remove):
     data['subreddit'] = data['subreddit'].display_name if data['subreddit'] else "Not Applicable"
     return {key: value for key, value in data.items() if key not in key_to_remove}
 
-for post in reddit.subreddit("All").search("LA wildfire", "new", "day"):
-    post_data = clean_data(vars(post), key_to_remove)
-    post_lst.append(post_data)
-    post.comments.replace_more(limit=None)
-    if post.comments.list() != []:
-        for comment in post.comments.list():
-            comment_data = clean_data(vars(comment), key_to_remove)
-            comment_data.setdefault('title', '')
-            comment_data['selftext'] = comment_data['body']
-            sum = comment_data['downs'] + comment_data['ups']
-            if sum != 0:
-                comment_data['upvote_ratio'] = comment_data['ups'] / sum
-            else:
-                comment_data['upvote_ratio'] = 0.5
-            count = comment.replies.__len__()
-            comment_data['num_crossposts'] = count
-            comment_data['num_comments'] = count
-            comment_lst.append(comment_data)
-    #time.sleep(2)
+def safe_request():
+    """Fetch posts while handling rate limits"""
+    try:
+        for post in reddit.subreddit("all").search("LA wildfire", sort="top", time_filter="month", limit= 400):  # Reduce limit
+            date = post.created_utc
+            if date < start_date:
+                continue
+            
+            post_data = clean_data(vars(post), key_to_remove)
+            post_lst.append(post_data)
+            print("Processing Post:", post.title)
+
+            # Reduce the number of comments fetched to avoid hitting limits
+            post.comments.replace_more(limit= 5, threshold = 5)  # Fetch only a few levels of comments
+
+            if post.comments.list():
+                for comment in post.comments:
+                    comment_data = clean_data(vars(comment), key_to_remove)
+                    comment_data.setdefault('title', '')
+                    comment_data['selftext'] = comment_data.get('body', '')
+
+                    # Calculate upvote ratio safely
+                    total_votes = comment_data.get('downs', 0) + comment_data.get('ups', 0)
+                    comment_data['upvote_ratio'] = (comment_data['ups'] / total_votes) if total_votes else 0.5
+
+                    # Count replies safely
+                    count = len(comment.replies)
+                    comment_data['num_crossposts'] = count
+                    comment_data['num_comments'] = count
+
+                    comment_lst.append(comment_data)
+            
+            time.sleep(2)  # Respect Reddit's rate limit
+    except prawcore.exceptions.TooManyRequests as e:
+        print(f"Rate limit exceeded! Waiting 60s before retrying... ({e})")
+        time.sleep(60)  # Wait before retrying
+        safe_request()  # Retry after delay
+    except:
+        print(f"Error: ({e})")
+
+safe_request()
 
 with open('post_data.json', 'w') as f:
     for obj in post_lst:
@@ -59,15 +86,3 @@ with open('comment_data.json', 'w') as f:
         f.write(json.dumps(obj) + "\n")
 
 print("Task Finished!")
-
-# # assume you have a praw.Reddit instance bound to variable `reddit`
-# submission = reddit.submission("1ib8blh")
-# print(submission.title)  # to make it non-lazy
-# pprint.pprint(vars(submission))
-
-
-# # assume you have a praw.Reddit instance bound to variable `reddit`
-# comment = reddit.comment("m9fr423")
-# print(comment.body)  # to make it non-lazy
-# pprint.pprint(vars(comment))
-
