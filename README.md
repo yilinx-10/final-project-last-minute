@@ -1,4 +1,29 @@
-# final-project-last-minute
+# final-project-last-minute: Sociol Bots in Public Discussions
+
+# File Navigation
+- bluesky
+  - bluesky_scrape_CleanCode.ipynb(COMPLETE)
+    - bluesky_posts_0131.json
+- reddit
+  - reddit_scraper.py: Scraper Codes(COMPLETE)
+    - reddit_comment_data.json
+    - reddit_post_dat.json
+  - reddit_comments_bot_prob.csv(COMPLETE)
+  - reddit_cleaning_wrangling.ipynb: Data Cleaning & Wrangling Codes(COMPLETE)
+    - reddit_averaged_bot_prob.csv
+    - reddit_comments_cleaned.json
+    - reddit_posts_cleaned.json
+    - reddit_reply_to_complete.json, reddit_reply_to_POSTID.json(x11)
+  - reddit_visualization.ipynb: Data Visualization & Analysis(**ONGOING**)
+    - reddit_post_2_complete.png(Sample with Spring Layout)
+    - reddit_post_2_mindegree3.png(Sample with Spring Layout)
+    - **See Jupyter Nodebook for Updated Visualization Layout Graphs**
+- Progress_Report_1.pdf
+- README.md
+- data_merge.ipynb
+- network_metric_visualization.ipynb
+- post_data.json_bots.json: example output of bot classification model
+
 # Project Description: 
 ## Research Question:
 How do social bots engage in public discussions about topics in the Los Angeles wildfire?
@@ -58,7 +83,6 @@ Also, We will identify users using the author_fullname attribute which is a uniq
 
 # Resources:
 BotBuster: https://github.com/quarbby/BotBuster-Universe
-Botometer X: https://botometer.osome.iu.edu/
 
 
 
