@@ -17,7 +17,7 @@ Below is an overview of the README's contents:
 |------------------|-----------------------------------------------|
 | Hugo He  | | 
 | Moe Wu  | | 
-| Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization, Slides, README| 
+| Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Edge Lists, Nodes Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
 
 ## Project Description
 This project examines the role of the National Science Foundation (NSF) 
