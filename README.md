@@ -1,91 +1,114 @@
-# final-project-last-minute: Sociol Bots in Public Discussions
+# final-project-Last-Minute
 
-# File Navigation
-- bluesky
-  - bluesky_scrape_CleanCode.ipynb(COMPLETE)
-    - bluesky_posts_0131.json
-- reddit
-  - reddit_scraper.py: Scraper Codes(COMPLETE)
-    - reddit_comment_data.json
-    - reddit_post_dat.json
-  - reddit_comments_bot_prob.csv(COMPLETE)
-  - reddit_cleaning_wrangling.ipynb: Data Cleaning & Wrangling Codes(COMPLETE)
-    - reddit_averaged_bot_prob.csv
-    - reddit_comments_cleaned.json
-    - reddit_posts_cleaned.json
-    - reddit_reply_to_complete.json, reddit_reply_to_POSTID.json(x11)
-  - reddit_visualization.ipynb: Data Visualization & Analysis(**ONGOING**)
-    - reddit_post_2_complete.png(Sample with Spring Layout)
-    - reddit_post_2_mindegree3.png(Sample with Spring Layout)
-    - **See Jupyter Nodebook for Updated Visualization Layout Graphs**
-- Progress_Report_1.pdf
-- README.md
-- data_merge.ipynb
-- network_metric_visualization.ipynb
-- post_data.json_bots.json: example output of bot classification model
+This repository houses the code, presentation materials, and final project report for Team Last Minute’s MACS 30122 Group Project, which explores the involvement of social bots in online discussions surrounding the 2025 Los Angeles Wildfire.
 
-# Project Description: 
-## Research Question:
-How do social bots engage in public discussions about topics in the Los Angeles wildfire?
-## Social Science Relevance:
+Below is an overview of the README's contents:
+| Section          | Description                                   |
+|------------------|-----------------------------------------------|
+| [Team Members](#team-members-and-division-of-labor) | Details about the contributors and their respective roles |
+| [Project Description](#project-description) | 	Overview of research questions, motivation, data visualization, analysis strategies, and key findings |
+| [Github Repo Navigation](#github-repo-navigation) | Guide to navigating this repository |
+| [Process](#process) | Instructions on running the code to replicate the results |
+| [Usage of AI](#usage-of-AI-assistance) | 	Explanation of how AI tools were utilized in this project |
+| [ Links to Presentation In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation](#links-to-presentation-in-Class-presentation-slides,-updated-presentation-slide,-and-video-presentation) | Links to in-class presentation slides, updated slides, and video presentation |
+
+## Team Members and Division of Labor
+| Contributors(Alphabetical Order)  | Description                                   |
+|------------------|-----------------------------------------------|
+| Hugo He  | | 
+| Moe Wu  | | 
+| Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization, Slides, README| 
+
+## Project Description
+This project examines the role of the National Science Foundation (NSF) 
+funding in shaping the academic output of scholars within the realms of 
+Behavioral and Cognitive Sciences. It boasts social science significance as it
+explores the allocation and effectiveness of research funding, one of the most 
+crucial public resources in scientific development, in enhancing research output 
+and advancing knowledge in areas critical to societal progress and human well-being.
+
+### Social Science Relevance  
 Active participation of online social bots in political debates and discussions has been extensively researched and confirmed by previous studies. For instance, Hagen et al. (2020) examined the activity patterns of social bots in discussions surrounding the 2020 U.S. presidential election on Twitter through network analysis. However, despite the high politicization and widespread generation and dissemination of online misinformation about environmental issues, few studies have explored the influence of bots. Building on this body of work, we aim to explore the prevalence of social bots in public discussions about topics beyond U.S. politics. We hypothesize that the prevalence of bots in discussions about elections is largely due to the involvement of various stakeholders. Similarly, while the L.A. wildfires are not explicitly political, they naturally evoke discussions about state policies and governmental responses, making them a relevant event to study social bot behavior. 
 
+### Bot Identification
+We used [BotBuster-Universe](https://github.com/quarbby/BotBuster-Universe) to compute the bot probability of each Reddit comment we collected. Refer to BotBuster-Universe's Github Repository(linked) for more information. 
 
-# Research Questions & Hypotheses:
-- Q1: How important are bots in wildfire discussions?
-- Q2.1: What sub-topics do social bots prefer in wildfire discussion?
-- Q2.2: How do social bots and humans differ in sub-topic preference?
-- Q3: How does the popularity of bots differ across platforms?
+### Main Objectives
+- Understanding Social Bots in LA Wildfire Discussions: Investigate how social bots engage in public discourse about the Los Angeles Wildfire in 2025, analyzing their role in shaping conversations.
+- Sub-Topic Preference Analysis: Identify the specific wildfire-related topics that social bots focus on and compare them to the topics preferred by human users.
+- Network Analysis: Utilize network analysis to determine the importance of social bots in online wildfire discussions by measuring engagement metrics like degree centrality and discussion tree structures.
 
-- H1: On reddit, we expect to observe a small proportion of bots have high importance while the majority of bots have little importance.
-- H2: On reddit, social bots prefer political related sub-topics in the wildfire discussion 
-- H3: On the pro-Democrats platform(Bluesky), we expect to observe a lower rate of use of bots than on Reddit.
+### Method & Key Packages We Used(Non-exhaustive)
+- Network Analysis with [NetworkX](https://networkx.org/documentation/stable/reference/index.html)
+- Topic Modeling with [BERTopic](https://maartengr.github.io/BERTopic/api/bertopic.html)
+- Reddit Scraping with [PRAW](https://praw.readthedocs.io/en/stable/index.html)
+- Pandas
+- Numpy
+- json
+- csv
+- matplotlib
+- seaborn
 
-# Data Sources: 
-## Reddit: 
-- Collection Method: Web Scraping with PRAW
-- Justification: Reddit is one of the largest platforms where people engage in idea exchanges about a wide variety of topics. It is easy to keep track of discussions by focusing on several selected Reddit communities directly related to the event of interest. Reddit data can be scraped using PRAW, the Python Reddit API Wrapper.
-- Time Frame: January 5, 2025 onward
-- Data Size: 248 Posts and 18,788 Comments
-- Validity: The validity of the data may be challenged as the reddit API has a strict limit of requests allowed. The close to maximum number of posts and comments we can collect using PRAW is 250 posts and their associated comments. As the process involved expanding CommentForest which sends additional requests, we are uncertain of the true maximum capacity. Attempts to request more posts may lead to account suspension. The data collected is not a complete picture of the online discussion. This problem may be resolved using a collection method which collects “top” posts containing the “LA wildfire” keyword within a set time frame of 20 days from January 5, 2025 to January 25, 2025 on old.reddit.com. In this case, the post contents and top-level comments(max 200) can be scraped.
-Alternative solution1: We are currently attempting to build a scraper that does not use PRAW to resolve the limited data issue. Ideally, this new scraper should be able to access 25 posts on 40 pages(max 1,000 posts) and 200 top comments associated with each post(max 200,000 comments).
-Alternative solution1. We first identify several most frequent subreddits in the initial posts and then using keyword like“big fire” “wildfire” search under each subreddit. After reaching limit for one subreddit, we use another account to scrape under another subreddit. In this way, we can increase data size to 250*n (the total number of subreddits we pick)
+### Key Findings
+- Humans are more likely to be Major Information Brokers
+  - The overall standalized betweenness centrality distribution shows most users (both bots and humans) clustering between -0.5-0.5.
+  - However, some users stand out with exceptionally high betweenness, indicating their role as a key influence in information exchange. These users are typically human.
+- Bots do exhibit high engagement in certain kinds of posts
+ - Among the 10 hottest posts, 5 have bots in the top five for betweenness centrality
+ - Three out of the ten hottest posts are mostly related to Topic0, which focuses on President Trump and California’s electricity and water supply policies.
+ - All of these three posts have bots ranking in the top five for betweenness centrality, implying that bot accounts may be particularly active in highly politicized discussions.
+- Cross-Post Influence
+ - Our visualization and analysis suggests the social bots follow an infiltration pattern of engagement.
 
-## Bluesky:
-- Collection Method: Bluesky API (https://docs.bsky.app/)
-- Justification: The Bluesky API is free and publicly available without the need for applications and approval. The platform itself is emerging.
-- Time Frame: January 17, 2025 to January 31, 2025 (working on scraping older data)
-- Data Size: 4896 threads with their comments
-- Validity: Data scraping currently encounters a 'literal_error'. I will continue working on it to scrape older data. I have not yet identified an API or method to detect bot users/bot-generated threads within the dataset. This issue can be resolved by conducting further research on relevant papers or GitHub projects. Alternatively, we can modify a bot detection project designed for a similar platform, such as X, or BotBoster-Universe to meet our needs.
-- Additional Info: Ideally, I will Bluesky scrape all threads dated after January 7, 2025, the date the Southern California wildfires began.
-
-# Data Cleaning and Wrangling: 
-- Reddit: 
-- Bot/human labeling
-The bot probability is used to identify whether a user is a bot or not. The bot probabilities of all comments and posts associated with that user is averaged to create a bot probability for the specific user. A threshold of 70% will be used initially to qualify users as bots. The percentage of bots will be stored as a node attribute for subreddits. We plan to alter the threshold to create multiple visualizations. 
-- Sub-topic detection
-We plan to detect sub-topics by combining existing labels (subreddit titles) with the unsupervised LDA model. We can utilize the existing subreddit titles, as some of them have clear thematic tendencies. For example, r/california_politics is related to politics, and r/environment is related to environmental issues. Furthermore, posts within the same subreddit may have overlapping themes, and different themes may also appear within a single subreddit. Based on this, we will apply the LDA topic model to perform unsupervised topic analysis on the content of the posts. We will then combine these two methods and manually check to determine our sub-topic list and categorize the posts.
-- Network matrix constructing
-We plan to construct user*user matrix for further network analysis. 
-Also, We will identify users using the author_fullname attribute which is a unique code associated with each user. If the user is found to be active(posting/commenting) in two subreddits, a tie is formed between the two subreddits. The weight of the tie will be reflecting the number of users active in both subreddit. We also plan to conduct community detection on our network.
-
-# Data Analysis and Visualization: 
-- Dependent variables: account type (bot/human)
-- Independent variables: sub-topic type; degree centrality
-- Data Analysis & Visualization Method:
-- Reddit: We plan to visualize network structures of subreddits given different bot qualification thresholds. This should reveal engagement of social bots in online discussions of Los Angeles wildfire. This should provide insights on whether social bots cluster on specific subreddits and hence topics. We hypothesize that there will be a cluster of subreddits related to politics with a high percentage of bot activity.
-
-# Responsibilities:
-- Hugo He: Presentation slides, video, Bluesky data scraping, data processing
-- Moe Wu: Bot detection, Data cleaning, wrangling, analysis, and visualization
-- Yilin Xu: Reddit Scraping, README, data cleaning, wrangling, analysis, and visualization
-
-
-# Resources:
-BotBuster: https://github.com/quarbby/BotBuster-Universe
-
-
-
+## Github Repo Navigation
+    .
+    ├── bluesky/
+      ├── bluesky_posts_0131.json
+      ├── bluesky_posts_0309.json
+      ├── bluesky BERTopic.ipynb # BERTopic topic modeling for Bluesky Data
+      ├── bluesky_scrape_CleanCode.ipynb
+    ├── reddit/    
+      ├── networkdata/ #folder for 'reply_to' json file for network construction
+      ├── networkviz/ #folder of network visualization results
+      reddit_scraper.py # Reddit scraper
+      reddit_post_data.json
+      reddit_posts_cleaned.json # cleaned reddit post data
+      reddit_topic.xlsx # reddit post manual topic assignment
+      reddit_comment_data.json
+      reddit_comments_cleaned.json # cleaned reddit comment data
+      reddit_cleaning_wrangling.ipynb # Jupyter Notebook for Data Cleaning & Wrangling
+      reddit_comments_bot_prob.csv # Output from BotBuster Model
+      reddit_averaged_bot_prob.csv # Processed Bot Probability Results
+      reddit_visualization.ipynb # Jupyter Notebook for Visualization and Analysis
+    ├── slides/    
+      ├── Last_Minute # In-Class Presentation Slide
+      ├── Last_Minute_Updated # Updated Presentation Slide
+    ├── Progress_Report_1.pdf     
+    ├── Progress_Report_2.pdf                 
+    └── README.md
 
 
+## Process
 
+This section outlines the (recommended) sequential order by which the users can reproduce the results with the code:
+0. Scraping Data from [Bluesky](bluesky/bluesky_scrape_CleanCode.ipynb) and [Reddit](reddit/reddit_scraper.py) (TIME CONSUMING! NOT RECOMMENDED TO RUN)  
+1. Topic Modeling: run [bluesky BERTopic.ipynb](https://github.com/macs30122-winter25/final-project-last-minute/blob/a533acd35440098d1f25ecec618b7ea936941858/bluesky/bluesky%20BERTopic.ipynb)
+2. Data Cleaning and Wrangling: download reddit data for [post](reddit/reddit_post_data.json), [comment](reddit/reddit_comment_data.json), [cleaning and wrangling notebook](reddit/reddit_cleaning_wrangling.ipynb). Put in one folder. Create empty folder `networkdata` inside main folder. Run Jupyter Notebook.
+3. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.
+
+
+## Usage of AI Assistance
+
+| Aspect                      | Description                                                                                  |
+|-----------------------------|----------------------------------------------------------------------------------------------|
+| WHERE  | HOW                                        |
+
+
+## Links to Presentation In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation
+Below are the materials related to our team's presentation as well as the final report:
+
+|  materials               | Link                                                                                           |
+|------------------------------|------------------------------------------------------------------------------------------------|
+| In-Class Presentation Slide  | [View Slide](https://drive.google.com/file/d/1l__2GNCp4-6oQd9xErsNj648UF1IXLJM/view?usp=drive_link) |
+| Updated Presentation Slide   | [View Slide]()  |
+| Video Presentation           | [Watch Video]()                                                                               |
