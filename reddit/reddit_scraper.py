@@ -121,3 +121,9 @@ with open('reddit_comment_data.json', 'w') as f:
 
 # Notify
 print("Task Finished!")
+
+# Reflection 
+# No AI is used to in any way for the codes in this file
+
+# Reference
+# PRAW documentation: https://praw.readthedocs.io/en/stable/getting_started/quick_start.html
