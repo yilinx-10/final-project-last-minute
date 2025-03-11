@@ -10,25 +10,36 @@ Below is an overview of the README's contents:
 | [Github Repo Navigation](#github-repo-navigation) | Guide to navigating this repository |
 | [Process](#process) | Instructions on running the code to replicate the results |
 | [Usage of AI](#usage-of-AI-assistance) | 	Explanation of how AI tools were utilized in this project |
-| [ Links to Presentation In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation](#links-to-presentation-in-Class-presentation-slides,-updated-presentation-slide,-and-video-presentation) | Links to in-class presentation slides, updated slides, and video presentation |
+| [In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation](#in-Class-presentation-slides,-updated-presentation-slide,-and-video-presentation) | Links to in-class presentation slides, updated slides, and video presentation |
 
 ## Team Members and Division of Labor
 | Contributors(Alphabetical Order)  | Description                                   |
 |------------------|-----------------------------------------------|
-| Hugo He  | | 
-| Moe Wu  | | 
-| Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Edge Lists, Nodes Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
+| Hugo He  | Bluesky Scraper, Manual Topic Assignment, Slides(Data Scraping), Video| 
+| Moe Wu  | Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis)| 
+| Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Nodes & Edge Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
 
 ## Project Description
-This project examines the role of the National Science Foundation (NSF) 
-funding in shaping the academic output of scholars within the realms of 
-Behavioral and Cognitive Sciences. It boasts social science significance as it
-explores the allocation and effectiveness of research funding, one of the most 
-crucial public resources in scientific development, in enhancing research output 
-and advancing knowledge in areas critical to societal progress and human well-being.
+
+### Research Questions
+- Q1: How important are bots in wildfire discussions?
+- Q2.1: What sub-topics do social bots prefer in wildfire discussion?
+- Q2.2: How do social bots and humans differ in sub-topic preference?
+- Q3: How does the popularity of bots differ across platforms?
 
 ### Social Science Relevance  
 Active participation of online social bots in political debates and discussions has been extensively researched and confirmed by previous studies. For instance, Hagen et al. (2020) examined the activity patterns of social bots in discussions surrounding the 2020 U.S. presidential election on Twitter through network analysis. However, despite the high politicization and widespread generation and dissemination of online misinformation about environmental issues, few studies have explored the influence of bots. Building on this body of work, we aim to explore the prevalence of social bots in public discussions about topics beyond U.S. politics. We hypothesize that the prevalence of bots in discussions about elections is largely due to the involvement of various stakeholders. Similarly, while the L.A. wildfires are not explicitly political, they naturally evoke discussions about state policies and governmental responses, making them a relevant event to study social bot behavior. 
+
+### Data Source
+- Bluesky
+  - Time Frame: January 7, 2025 to January 31, 2025
+  - Data Size: 4896 threads with their comments
+
+- Reddit
+  - Time Frame: January 5, 2025 onward
+  - Data Size: 164 Posts and 44,107 Comments
+
+
 
 ### Bot Identification
 We used [BotBuster-Universe](https://github.com/quarbby/BotBuster-Universe) to compute the bot probability of each Reddit comment we collected. Refer to BotBuster-Universe's Github Repository(linked) for more information. 
@@ -94,7 +105,7 @@ This section outlines the (recommended) sequential order by which the users can 
 0. Scraping Data from [Bluesky](bluesky/bluesky_scrape_CleanCode.ipynb) and [Reddit](reddit/reddit_scraper.py) (TIME CONSUMING! NOT RECOMMENDED TO RUN)  
 1. Topic Modeling: run [bluesky BERTopic.ipynb](https://github.com/macs30122-winter25/final-project-last-minute/blob/a533acd35440098d1f25ecec618b7ea936941858/bluesky/bluesky%20BERTopic.ipynb)
 2. Data Cleaning and Wrangling: download reddit data for [post](reddit/reddit_post_data.json), [comment](reddit/reddit_comment_data.json), [cleaning and wrangling notebook](reddit/reddit_cleaning_wrangling.ipynb). Put in one folder. Create empty folder `networkdata` inside main folder. Run Jupyter Notebook.
-3. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.
+3. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.)
 
 
 ## Usage of AI Assistance
@@ -104,7 +115,7 @@ This section outlines the (recommended) sequential order by which the users can 
 | WHERE  | HOW                                        |
 
 
-## Links to Presentation In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation
+## In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation
 Below are the materials related to our team's presentation as well as the final report:
 
 |  materials               | Link                                                                                           |
