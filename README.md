@@ -9,14 +9,14 @@ Below is an overview of the README's contents:
 | [Project Description](#project-description) | 	Overview of research questions, motivation, data visualization, analysis strategies, and key findings |
 | [Github Repo Navigation](#github-repo-navigation) | Guide to navigating this repository |
 | [Process](#process) | Instructions on running the code to replicate the results |
-| [Usage of AI](#usage-of-AI-assistance) | 	Explanation of how AI tools were utilized in this project |
-| [In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation](#in-Class-presentation-slides,-updated-presentation-slide,-and-video-presentation) | Links to in-class presentation slides, updated slides, and video presentation |
+| [Usage of AI](#usage-of-ai-assistance) | 	Explanation of how AI tools were utilized in this project |
+| [In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation](#in-class-presentation-slides-updated-presentation-slide-and-video-presentation) | Links to in-class presentation slides, updated slides, and video presentation |
 
 ## Team Members and Division of Labor
 | Contributors(Alphabetical Order)  | Description                                   |
 |------------------|-----------------------------------------------|
 | Hugo He  | Bluesky Scraper, Manual Topic Assignment, Slides(Data Scraping), Video| 
-| Moe Wu  | Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis)| 
+| Moe Wu  | Bot/Human Labelling, Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis)| 
 | Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Nodes & Edge Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
 
 ## Project Description
@@ -38,8 +38,6 @@ Active participation of online social bots in political debates and discussions 
 - Reddit
   - Time Frame: January 5, 2025 onward
   - Data Size: 164 Posts and 44,107 Comments
-
-
 
 ### Bot Identification
 We used [BotBuster-Universe](https://github.com/quarbby/BotBuster-Universe) to compute the bot probability of each Reddit comment we collected. Refer to BotBuster-Universe's Github Repository(linked) for more information. 
@@ -103,16 +101,17 @@ We used [BotBuster-Universe](https://github.com/quarbby/BotBuster-Universe) to c
 
 This section outlines the (recommended) sequential order by which the users can reproduce the results with the code:  
 0. Scraping Data from [Bluesky](bluesky/bluesky_scrape_CleanCode.ipynb) and [Reddit](reddit/reddit_scraper.py) (TIME CONSUMING! NOT RECOMMENDED TO RUN)  
-1. Topic Modeling: run [bluesky BERTopic.ipynb](https://github.com/macs30122-winter25/final-project-last-minute/blob/a533acd35440098d1f25ecec618b7ea936941858/bluesky/bluesky%20BERTopic.ipynb)
-2. Data Cleaning and Wrangling: download reddit data for [post](reddit/reddit_post_data.json), [comment](reddit/reddit_comment_data.json), [cleaning and wrangling notebook](reddit/reddit_cleaning_wrangling.ipynb). Put in one folder. Create empty folder `networkdata` inside main folder. Run Jupyter Notebook.
-3. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.)
+1. Topic Modeling: run [bluesky BERTopic.ipynb](https://github.com/macs30122-winter25/final-project-last-minute/blob/a533acd35440098d1f25ecec618b7ea936941858/bluesky/bluesky%20BERTopic.ipynb)  
+2. Data Cleaning and Wrangling: download reddit data for [post](reddit/reddit_post_data.json), [comment](reddit/reddit_comment_data.json), [cleaning and wrangling notebook](reddit/reddit_cleaning_wrangling.ipynb). Put in one folder. Create empty folder `networkdata` inside main folder. Run Jupyter Notebook.  
+3. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.)  
 
 
 ## Usage of AI Assistance
 
 | Aspect                      | Description                                                                                  |
 |-----------------------------|----------------------------------------------------------------------------------------------|
-| WHERE  | HOW                                        |
+| Bluesky Scraper  | Design Parse Date Function                                      |
+| Network Visualization  | Improve Visualization Parameters                                      |
 
 
 ## In-Class Presentation Slides, Updated Presentation Slide, and Video Presentation
@@ -121,5 +120,5 @@ Below are the materials related to our team's presentation as well as the final 
 |  materials               | Link                                                                                           |
 |------------------------------|------------------------------------------------------------------------------------------------|
 | In-Class Presentation Slide  | [View Slide](https://drive.google.com/file/d/1l__2GNCp4-6oQd9xErsNj648UF1IXLJM/view?usp=drive_link) |
-| Updated Presentation Slide   | [View Slide]()  |
+| Updated Presentation Slide   | [View Slide](https://docs.google.com/presentation/d/1ZBmHigzorOr59d_jzhNyYkBCHIX91uLrL6bLp3pvZ5k/edit?usp=sharing)  |
 | Video Presentation           | [Watch Video]()                                                                               |
