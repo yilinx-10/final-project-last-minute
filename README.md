@@ -16,7 +16,7 @@ Below is an overview of the README's contents:
 | Contributors(Alphabetical Order)  | Description                                   |
 |------------------|-----------------------------------------------|
 | Hugo He  | Bluesky Scraper, Manual Topic Assignment, Slides(Data Scraping), Video| 
-| Moe Wu  | Bot/Human Labelling, Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis)| 
+| Moe Wu  | Bot/Human Labelling, Reddit BerTopic, Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis), Video| 
 | Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Nodes & Edge Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
 
 ## Project Description
@@ -121,4 +121,4 @@ Below are the materials related to our team's presentation as well as the final 
 |------------------------------|------------------------------------------------------------------------------------------------|
 | In-Class Presentation Slide  | [View Slide](https://drive.google.com/file/d/1l__2GNCp4-6oQd9xErsNj648UF1IXLJM/view?usp=drive_link) |
 | Updated Presentation Slide   | [View Slide](https://docs.google.com/presentation/d/1ZBmHigzorOr59d_jzhNyYkBCHIX91uLrL6bLp3pvZ5k/edit?usp=sharing)  |
-| Video Presentation           | [Watch Video]()                                                                               |
+| Video Presentation           | [Watch Video](https://drive.google.com/file/d/1j49E0GIaIM8BxXCVaTf_9xyeh88dYAZS/view?usp=sharing)                                                                               |
