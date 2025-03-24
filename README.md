@@ -16,7 +16,7 @@ Below is an overview of the README's contents:
 | Contributors(Alphabetical Order)  | Description                                   |
 |------------------|-----------------------------------------------|
 | Hugo He  | Bluesky Scraper, Manual Topic Assignment, Slides(Data Scraping), Video| 
-| Moe Wu  | Bot/Human Labelling, Data Visualization(Plotting Post-Specific Graphs, Aesthetics), Data Analysis, Slides(Data Visualization & Anlysis)| 
+| Moe Wu  | Bot/Human Labelling, Reddit BerTopic, Data Visualization(Plotting Post-Specific Graphs, Aesthetics, Degree Adjustment, Node Filtering), Data Analysis, Slides(Data Visualization & Anlysis), Video| 
 | Yilin Xu  | Reddit Scraper, Bluesky BERTopic, Data Cleaning & Wrangling, Data Visualization(Prepate Nodes & Edge Lists, Batch Produce Visualizations, Cross-Post Network Visualization, Layouts, Aesthetics), Slides(Data Cleaning & Wrangling, Aesthetics), README| 
 
 ## Project Description
@@ -103,7 +103,7 @@ This section outlines the (recommended) sequential order by which the users can 
 1. Scraping Data from [Bluesky](bluesky/bluesky_scrape_CleanCode.ipynb) and [Reddit](reddit/reddit_scraper.py) (TIME CONSUMING! NOT RECOMMENDED TO RUN)  
 2. Topic Modeling: run [bluesky BERTopic.ipynb](https://github.com/macs30122-winter25/final-project-last-minute/blob/a533acd35440098d1f25ecec618b7ea936941858/bluesky/bluesky%20BERTopic.ipynb)  
 3. Data Cleaning and Wrangling: download reddit data for [post](reddit/reddit_post_data.json), [comment](reddit/reddit_comment_data.json), [cleaning and wrangling notebook](reddit/reddit_cleaning_wrangling.ipynb). Put in one folder. Create empty folder `networkdata` inside main folder. Run Jupyter Notebook.  
-4. Data Visualization: download [visualization notebook](reddit/reddit_visualization.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.)  
+4. Data Visualization: download [visualization notebook](reddit/reddit_visualization_final.ipynb) in the same main folder. Create empty folder `networkviz` inside main folder. Run Jupyter Notebook. Note 'Descriptive Metrics' section of this notebook takes a long time to run(compute betweenness centrality.)  
 
 
 ## Usage of AI Assistance
@@ -121,4 +121,4 @@ Below are the materials related to our team's presentation as well as the final 
 |------------------------------|------------------------------------------------------------------------------------------------|
 | In-Class Presentation Slide  | [View Slide](https://drive.google.com/file/d/1l__2GNCp4-6oQd9xErsNj648UF1IXLJM/view?usp=drive_link) |
 | Updated Presentation Slide   | [View Slide](https://docs.google.com/presentation/d/1ZBmHigzorOr59d_jzhNyYkBCHIX91uLrL6bLp3pvZ5k/edit?usp=sharing)  |
-| Video Presentation           | [Watch Video]()                                                                               |
+| Video Presentation           | [Watch Video](https://drive.google.com/file/d/1j49E0GIaIM8BxXCVaTf_9xyeh88dYAZS/view?usp=sharing)                                                                               |
